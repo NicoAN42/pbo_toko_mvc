@@ -25,8 +25,8 @@ public class dao_toko implements implementToko {
     Connection connection;
     public String TampilData = "SELECT * FROM `barang`";
     public String UbahData = "UPDATE `barang` SET `Nama_Barang`=?, `Harga`=?, `Kategori`=?, `Jenis`=? Where `Kode_Barang`=?;";
-    public String SimpanData = "INSERT INTO `barang` VALUES (?, ?, ?, ?, ?)";
-    public String HapusData = "DELETE FROM `barang`";
+    public String SimpanData = "INSERT INTO `barang`(`Kode_Barang`, `Nama_Barang`, `Kategori`, `Jenis`, `Harga`) VALUES ()";
+    public String HapusData = "DELETE FROM `toko`.`barang` WHERE `barang`.`Kode_Barang` ";
     public String CariKategori = "SELECT `Kode_Barang`, `Nama_Barang`, `Kategori`, `Jenis`, `Harga` FROM `barang` WHERE Kategori like ?";
     
     public dao_toko(){

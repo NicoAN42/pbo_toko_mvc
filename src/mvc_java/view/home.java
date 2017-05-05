@@ -153,6 +153,12 @@ public class home extends javax.swing.JFrame {
 
         cbjenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Pilih Packaging--", "Pack" }));
 
+        txtharga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txthargaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -166,13 +172,14 @@ public class home extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtkode)
-                    .addComponent(txtnama)
-                    .addComponent(cbKategoriBrg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbjenis, 0, 337, Short.MAX_VALUE)
-                    .addComponent(txtharga))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtkode)
+                        .addComponent(txtnama)
+                        .addComponent(cbKategoriBrg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbjenis, 0, 337, Short.MAX_VALUE))
+                    .addComponent(txtharga, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,10 +201,10 @@ public class home extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(cbjenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(txtharga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 68, 490, -1));
@@ -288,6 +295,8 @@ public class home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_SimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SimpanActionPerformed
+
+
         // TODO add your handling code here:
         ctoko.SimpanData();
         ctoko.isiTable();
@@ -305,30 +314,38 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_BersihActionPerformed
 
     private void Btn_HapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_HapusActionPerformed
-        // TODO add your handling code here:
+ int baris = Tabel1.getSelectedRow();
+    if (baris != -1){
+    String id = Tabel1.getValueAt(baris, 0).toString();
+    String SQL = "DELETE FROM toko WHERE Kode_Barang=?";        // TODO add your handling code here:
         ctoko.Hapus();
         ctoko.isiTable();
     }//GEN-LAST:event_Btn_HapusActionPerformed
-
+    }
     private void Btn_KeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_KeluarActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_Btn_KeluarActionPerformed
 
     private void Btn_CariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CariActionPerformed
-        // TODO add your handling code here:
+String cari="SELECT * FROM toko WHERE Kategori='"+CbCariKategori+"'";   
+// TODO add your handling code here:
         ctoko.CariKategori();
         ctoko.isiTable();
     }//GEN-LAST:event_Btn_CariActionPerformed
+
+    private void txthargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthargaActionPerformed
+            // TODO add your handling code here:
+    }//GEN-LAST:event_txthargaActionPerformed
     
     public JTextField getTxtKode(){
         return txtkode;
     }
     public JTextField getTxtNama(){
-        return txtkode;
+        return txtnama;
     }
     public JTextField getTxtHarga(){
-        return txtnama;
+        return txtharga;
     }
     public JComboBox getCbKategori(){
         return cbKategoriBrg;
