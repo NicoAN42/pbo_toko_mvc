@@ -17,6 +17,7 @@ import mvc_java.control.c_koneksi;
 /**
  *
  * @author nicoardiannugroho
+ * yess
  */
 public class login extends javax.swing.JFrame {
 
