@@ -19,7 +19,11 @@ import mvc_java.model.m_toko;
  * @author nicoardiannugroho
  */
 public class home extends javax.swing.JFrame {
-    controllerToko ctoko;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5691673901869940155L;
+	controllerToko ctoko;
     List<m_toko>listdata = new ArrayList<>();
     /**
      * Creates new form home

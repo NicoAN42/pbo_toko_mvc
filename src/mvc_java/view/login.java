@@ -21,6 +21,10 @@ import mvc_java.control.c_koneksi;
 public class login extends javax.swing.JFrame {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1811994596891294149L;
+	/**
      * Creates new form login
      */
     public static String user;
